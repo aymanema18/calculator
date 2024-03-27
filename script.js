@@ -1,6 +1,7 @@
 let input = document.querySelector(".input");
 let value = [];
 let numHolder = "";
+let operaHolder = "";
 let numbers = document.querySelectorAll(".number");
 let add = document.querySelector(".add");
 let divide = document.querySelector(".divide");
@@ -10,14 +11,29 @@ let equals = document.querySelector(".equals");
 let result;
 let check = [];
 let flag = false;
+let ans;
 
 let operators = document.querySelectorAll(".operator");
 operators.forEach(operator => {
     operator.addEventListener("click", () => {
+        if (ans === +input.textContent) {
+            value.push(ans);
+        } else {
+            value.push(+numHolder);
+        }
+        if (value.length === 3 && value[0] === 0 && value[1] === "-" && typeof value[2] === "number") {
+            value[0] = +(value[1] + value[2]);
+            value.pop();
+            value.pop();
+            
+        }
+        operaHolder = operator.value;
+        value.push(operaHolder);
+
         if (!((+input.textContent^2).length > 10)) {
 
             if (value.length === 3){
-                if (value[2] in ["+", "-", "/", "*"]) {
+                if (value[2] in ["+", "-", "/", "*"] && value[1] in ["+", "-", "/", "*"]) {
                     value[1] = value[2];
                     value[2].pop();
                     console.log(value);
@@ -26,30 +42,32 @@ operators.forEach(operator => {
                     operate(value[0], value[2]);
                 }
             }
-            if (value.length === 2 && !(value[2] in ["+", "-", "/", "*"])) {
+            if (value.length === 4 && ["+", "-", "/", "*"].includes(operaHolder)) {
                 check.push(+input.textContent);
-                check.push(operator.value);
+                check.push(operaHolder);
                 console.log(check);
                 console.log(value);
                 value.push(check[0])
                 operate(value[0], value[2]);
-                value.push(operator.value);
+                value.push(operaHolder);
                 check = [];
     
             }
             if (!(value.length > 0)) {
                 value.push(+numHolder);
-                value.push(operator.value);
+                value.push(operaHolder);
                 console.log(value);
+
                 numHolder = "";
             }
             if (typeof value[0] !== "number") {
                 value = [];
             }
             if (value.length === 1) {
-                value.push(operator.value);
+                value.push(operaHolder);
             }
             flag = true;
+            numHolder = "";
         }
     });
     
@@ -71,6 +89,7 @@ equals.addEventListener("click", () => {
     }
     numHolder = "";
     console.log(value);
+    ans = +input.textContent;
 });
 numbers.forEach(number => {
     number.addEventListener("click", () => {
