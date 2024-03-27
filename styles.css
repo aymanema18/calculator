@@ -88,6 +88,10 @@ h1 {
     box-sizing: border-box;
 }
 
+.row > div {
+    height: 47px;
+}
+
 button {
     color: #276B73;
     background-color: #F2CF63;
@@ -106,7 +110,7 @@ button, .calculator input {
     font-weight: bold;
 }
 
-.calculator div {
+.calculator .row {
     justify-content: space-between;
     width: 100%
 }
