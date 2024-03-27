@@ -25,6 +25,7 @@ header, ul {
 header {
     justify-content: space-between;
     align-items: center;
+    padding: 15px 0 0 0;
 }
 
 ul {
@@ -52,6 +53,7 @@ a {
 
 .sec1-left-half {
     flex: 2;
+    padding-right: 20px;
 }
 
 .sec1-left-half p {
@@ -107,4 +109,47 @@ button, .calculator input {
 .calculator div {
     justify-content: space-between;
     width: 100%
+}
+
+.section-2 {
+    background-color: #F2CF63;
+    color:#163840;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.section-2 h2 {
+    margin: 0;
+}
+
+.sec2-container {
+    width: 65%;
+}
+
+.sec2-container p {
+    font-weight: 300;
+}
+
+.section-3 {
+    display: flex;
+    padding: 50px 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.sec3-container {
+    width: 70%;
+}
+
+footer {
+    background-color: #163840;
+    color: white;
+}
+
+.footer-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
