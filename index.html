@@ -3,36 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="section-1">
+    <div id="home" class="section-1">
         <div class="sec1-container">
             <header><img src="simplecalc.svg" alt="simplecalc.svg" height="40px" width="auto"> 
                 <nav>
                     <ul>
-                        <li>home</li>
-                        <li>facts</li>
-                        <li>about</li>
+                        <li><a href="#home">home</a></li>
+                        <li><a href="#facts" >facts</a></li>
+                        <li><a href="#about">about</a></li>
                     </ul>
                 </nav>
             </header>
-            <div class="sec1-left-half">
-                <h1>CALCULATOR</h1>
-                <p>This is the mighty calculator. This calculator can do addition, subtraction, multiplication, and division mathematical calculations.</p>
-            </div>
-            <div class="sec2-right-half">
-                <div class="calculator">
-                    <div></div>
-                    <div><button value="7">7</button><button value="8">8</button><button value="9">9</button><button value="/">/</button></div>
-                    <div><button value="4">4</button><button value="5">5</button><button value="6">6</button><button value="*">*</button></div>
-                    <div><button value="1">1</button><button value="2">2</button><button value="3">3</button><button value="-">-</button></div>
-                    <div><button value="0">0</button><button value=".">.</button><button value="=">=</button><button value="+">+</button></div>
+            <div class="left-and-right-container">
+                <div class="sec1-left-half">
+                    <h1>CALCULATOR</h1>
+                    <p>This is the mighty calculator. This calculator can do addition, subtraction, multiplication, and division mathematical calculations.</p>
+                </div>
+                <div class="sec1-right-half">
+                    <div class="calculator">
+                        <input type="text">
+                        <div><button value="7">7</button><button value="8">8</button><button value="9">9</button><button value="/">/</button></div>
+                        <div><button value="4">4</button><button value="5">5</button><button value="6">6</button><button value="*">*</button></div>
+                        <div><button value="1">1</button><button value="2">2</button><button value="3">3</button><button value="-">-</button></div>
+                        <div><button value="0">0</button><button value=".">.</button><button value="=">=</button><button value="+">+</button></div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="section-2">
+    <div id="facts" class="section-2">
         <div class="sec2-container">
             <h2>Did you know?</h2>
             <p>The first mechanical calculator was invented by Blaise Pascal in 1642. It was called the Pascaline and could perform addition and subtraction.</p>
@@ -41,7 +47,7 @@
             <p>The first pocket-sized calculator, the "Cal Tech," was introduced in 1971 by Texas Instruments. It revolutionized the industry, making calculations portable and accessible.</p>
         </div>
     </div>
-    <div class="section-3">
+    <div id="about" class="section-3">
         <div class="sec3-container">
             <p>About us</p>
             <p>Welcome to SimpleCalc, your go-to destination for quick and easy calculations!</p>
