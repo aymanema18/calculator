@@ -75,9 +75,9 @@ h1 {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    padding: 30px 15px;
+    padding: 40px 20px;
     gap: 15px;
-    box-shadow: 0 7px #0b4e54;
+    box-shadow: 0 14px #0b4e54;
 }
 
 .calculator input {
@@ -133,7 +133,8 @@ button, .calculator input {
 }
 
 .sec2-container p {
-    font-weight: 300;
+    font-weight: 500;
+    padding-left: 15px;
 }
 
 .section-3 {
