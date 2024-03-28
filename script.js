@@ -50,7 +50,7 @@ operators.forEach(operator => {
                 console.log(check);
                 console.log(value);
                 value.push(check[0])
-                operate(value[0], value[2]);
+                operate(value[0], value[2], value[1]);
                 value.push(operaHolder);
                 check = [];
     
@@ -181,6 +181,16 @@ function operate(num1, num2, operator) {
             }
             input.textContent = result;
             break;
+    }
+    if (result.toString().split("").includes(".")) {
+        dotArray = result.toString().split("");
+        index = result.toString().split("").indexOf(".");
+        if (dotArray[index + 2]) {
+            result = dotArray.slice(0, index + 2).join("");
+        } else {
+            result = dotArray.join("");
+        }
+        input.textContent = result;
     }
     value = [];
     value.push(result);
