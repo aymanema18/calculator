@@ -12,6 +12,8 @@ let result;
 let check = [];
 let flag = false;
 let ans;
+let dotArray = [];
+let index;
 
 let operators = document.querySelectorAll(".operator");
 operators.forEach(operator => {
@@ -39,7 +41,7 @@ operators.forEach(operator => {
                     console.log(value);
                 }
                 if (value.length === 3) {
-                    operate(value[0], value[2]);
+                    operate(value[0], value[2], value[1]);
                 }
             }
             if (value.length === 4 && ["+", "-", "/", "*"].includes(operaHolder)) {
@@ -82,7 +84,7 @@ equals.addEventListener("click", () => {
             console.log(value);
         }
         if (value.length === 3) {
-            operate(value[0], value[2]);
+            operate(value[0], value[2], value[1]);
         }
         flag = true;
         value = [];
@@ -101,6 +103,15 @@ numbers.forEach(number => {
             input.textContent = numHolder + number.value;
             numHolder = input.textContent;
             console.log(input.textContent);
+            if (numHolder.toString().split("").includes(".")) {
+                dotArray = numHolder.toString().split("");
+                index = numHolder.toString().split("").indexOf(".");
+                if (dotArray[index + 2]) {
+                    numHolder = dotArray.slice(0, index + 2).join("");
+                } else {
+                    numHolder = dotArray.join("");
+                }
+            }
         }
         console.log(value);
     })
@@ -122,22 +133,52 @@ function toMultiply(num1,num2) {
 function toDivide(num1, num2) {
     return num1 / num2;
 }
-function operate(num1, num2) {
-    switch (value[1]){
+function operate(num1, num2, operator) {
+    switch (operator){
         case "+":
             result = toAdd(num1, num2);
+            if (result.toString().split("").length >= 10) {
+                if (result === 1000000000) {
+                    result = "1e+9";
+                } else if (result <= -999999) {
+                    result = NaN;
+                } else if (result > 1000000000) {
+                    result = Infinity;
+                }
+            }
             input.textContent = result;
             break;
         case "-":
             result = toSubtract(num1, num2);
+            if (result === 1000000000) {
+                result = 1e+9;
+            } else if (result <= -999999) {
+                result = NaN;
+            } else if (result > 1000000000) {
+                result = Infinity;
+            }
             input.textContent = result;
             break;
         case "*": 
             result = toMultiply(num1, num2);
+            if (result === 1000000000) {
+                result = 1e+9;
+            } else if (result <= -999999) {
+                result = NaN;
+            } else if (result > 1000000000) {
+                result = Infinity;
+            }
             input.textContent = result;
             break;
         case "/": 
             result = toDivide(num1, num2);
+            if (result === 1000000000) {
+                result = 1e+9;
+            } else if (result <= -999999) {
+                result = NaN;
+            } else if (result > 1000000000) {
+                result = Infinity;
+            }
             input.textContent = result;
             break;
     }
