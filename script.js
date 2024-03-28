@@ -8,6 +8,9 @@ let divide = document.querySelector(".divide");
 let subtract = document.querySelector(".subtract");
 let multiply = document.querySelector(".multiply");
 let equals = document.querySelector(".equals");
+let btns = document.querySelectorAll("button");
+let clear = document.querySelector(".clear");
+let emoji = document.querySelector(".emoji")
 let result;
 let check = [];
 let flag = false;
@@ -75,23 +78,27 @@ operators.forEach(operator => {
     
 });
 equals.addEventListener("click", () => {
-    value.push(+numHolder);
-    console.log(value);
-    if (value.length === 3){
-        if (typeof value[2] !== "number") {
-            value[1] = value[2];
-            value.pop();
-            console.log(value);
-        }
-        if (value.length === 3) {
-            operate(value[0], value[2], value[1]);
-        }
-        flag = true;
-        value = [];
+    if (numHolder !== "") {
+        value.push(+numHolder);
     }
-    numHolder = "";
     console.log(value);
-    ans = +input.textContent;
+    if (value.length === 3) {
+        if (value.length === 3){
+            if (typeof value[2] !== "number") {
+                value[1] = value[2];
+                value.pop();
+                console.log(value);
+            }
+            if (value.length === 3) {
+                operate(value[0], value[2], value[1]);
+            }
+            flag = true;
+            value = [];
+        }
+        numHolder = "";
+        console.log(value);
+        ans = +input.textContent;
+    }
 });
 numbers.forEach(number => {
     number.addEventListener("click", () => {
@@ -115,10 +122,34 @@ numbers.forEach(number => {
         }
         console.log(value);
     })
+});
+clear.addEventListener("click", () => {
+    input.textContent = "";
+    value = [];
+    numHolder = "";
+    operaHolder = "";
+    ans = "";
+});
+emoji.addEventListener("mousedown", () => {
+    input.textContent = ":-)";
+});
+emoji.addEventListener("mouseup", () => {
+    input.textContent = "";
+    value = [];
+    numHolder = "";
+    operaHolder = "";
+    ans = "";
 })
-
-
-
+btns.forEach(btn => {
+    btn.addEventListener("mousedown", () => {
+        btn.style.boxShadow = "none";
+        btn.parentElement.style.alignItems = "flex-end"
+    })
+    btn.addEventListener("mouseup", () => {
+        btn.style.boxShadow = "0 7px #826f34";
+        btn.parentElement.style.alignItems = "flex-start"
+    })
+});
 
 
 function toAdd(num1, num2) {
@@ -179,6 +210,9 @@ function operate(num1, num2, operator) {
             } else if (result > 1000000000) {
                 result = Infinity;
             }
+            if (num2 === 0) {
+                result = "Nope";
+            } 
             input.textContent = result;
             break;
     }

@@ -8,7 +8,8 @@ body {
     color: white;
     display: flex;
     justify-content: center;
-    height: 100vh;
+    
+
 }
 
 .sec1-container {
@@ -42,7 +43,7 @@ a {
     display: flex;
 }
 .left-and-right-container {
-    padding: 50px 0;
+    padding:40px 0 50px 0;
 }
 
 .sec1-right-half {
@@ -70,7 +71,7 @@ h1 {
 .calculator {
     background-color: #276B73;
     width: 210px;
-    height: 260px;
+    height: 330px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -92,7 +93,6 @@ h1 {
     font-size: 32px;
     font-weight: bold;
     padding-right: 10px;
-}
 }
 
 .row > div {
@@ -128,7 +128,6 @@ button{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
 }
 
 .section-2 h2 {
@@ -137,6 +136,7 @@ button{
 
 .sec2-container {
     width: 65%;
+    padding: 100px 0;
 }
 
 .sec2-container p {
@@ -164,4 +164,8 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.clear, .emoji {
+    width: 97px;
 }
