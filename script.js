@@ -86,8 +86,10 @@ equals.addEventListener("click", () => {
         ) {
             return;
     }
-    if (numHolder !== "") {
-        value.push(+numHolder);
+    if (value.length !== 0) {
+        if (numHolder !== "") {
+            value.push(+numHolder);
+        }
     }
     console.log(value);
     if (value.length === 3) {
