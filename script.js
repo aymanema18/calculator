@@ -23,6 +23,8 @@ operators.forEach(operator => {
     operator.addEventListener("click", () => {
         if (ans === +input.textContent) {
             value.push(ans);
+        } else if (value.length === 1) {
+            // do nothing
         } else {
             value.push(+numHolder);
         }
@@ -78,6 +80,12 @@ operators.forEach(operator => {
     
 });
 equals.addEventListener("click", () => {
+    if (value.length === 0 
+        && input.textContent.split("").includes(".") 
+        && !(input.textContent.split("").includes(".").indexOf(".") + 1)
+        ) {
+            return;
+    }
     if (numHolder !== "") {
         value.push(+numHolder);
     }
@@ -111,9 +119,15 @@ numbers.forEach(number => {
             numHolder = input.textContent;
             console.log(input.textContent);
             if (numHolder.toString().split("").includes(".")) {
+                if (numHolder.toString().split("").indexOf(".") !== numHolder.toString().split("").lastIndexOf(".")) {
+                    numHolder = numHolder.toString().split("");
+                    numHolder.pop();
+                    numHolder = numHolder.join("");
+                    input.textContent = numHolder;
+                }
                 dotArray = numHolder.toString().split("");
                 index = numHolder.toString().split("").indexOf(".");
-                if (dotArray[index + 2]) {
+                if (dotArray[index + 3]) {
                     numHolder = dotArray.slice(0, index + 2).join("");
                 } else {
                     numHolder = dotArray.join("");
@@ -219,7 +233,7 @@ function operate(num1, num2, operator) {
     if (result.toString().split("").includes(".")) {
         dotArray = result.toString().split("");
         index = result.toString().split("").indexOf(".");
-        if (dotArray[index + 2]) {
+        if (dotArray[index + 3]) {
             result = dotArray.slice(0, index + 2).join("");
         } else {
             result = dotArray.join("");
