@@ -10,7 +10,7 @@ let multiply = document.querySelector(".multiply");
 let equals = document.querySelector(".equals");
 let btns = document.querySelectorAll("button");
 let clear = document.querySelector(".clear");
-let emoji = document.querySelector(".emoji")
+let backspace = document.querySelector(".backspace")
 let result;
 let check = [];
 let flag = false;
@@ -146,16 +146,17 @@ clear.addEventListener("click", () => {
     operaHolder = "";
     ans = "";
 });
-emoji.addEventListener("mousedown", () => {
-    input.textContent = ":-)";
+backspace.addEventListener("click", () => {
+    if (input.textContent.split("").length === 1) {
+        input.textContent = "";
+        numHolder = ""
+    } else if (input.textContent.split("").length > 1) {
+        numHolder = input.textContent.split("")
+        numHolder.pop();
+        input.textContent = numHolder.join("");
+        numHolder = input.textContent;
+    }
 });
-emoji.addEventListener("mouseup", () => {
-    input.textContent = "";
-    value = [];
-    numHolder = "";
-    operaHolder = "";
-    ans = "";
-})
 btns.forEach(btn => {
     btn.addEventListener("mousedown", () => {
         btn.style.boxShadow = "none";
